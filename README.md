@@ -1,4 +1,4 @@
-[![Watch the video](https://www.awesomescreenshot.com/video/44689548?key=0907bc9b8538e8c493a2a384dfb5c888)
+[![Watch the video](https://imgur.com/doX6oUA)](https://imgur.com/kw55X8u))
 
 
 # VeriBite Food Prediction Platform
