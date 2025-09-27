@@ -1,0 +1,276 @@
+2025-09-26 16:03:28 [[31merror[39m]: Failed to connect to MongoDB: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017 {
+  "errorLabelSet": {},
+  "reason": {
+    "type": "Unknown",
+    "servers": {
+      "localhost:27017": {
+        "address": "localhost:27017",
+        "type": "Unknown",
+        "hosts": [],
+        "passives": [],
+        "arbiters": [],
+        "tags": {},
+        "minWireVersion": 0,
+        "maxWireVersion": 0,
+        "roundTripTime": -1,
+        "minRoundTripTime": 0,
+        "lastUpdateTime": 798966203,
+        "lastWriteDate": 0,
+        "error": {
+          "errorLabelSet": {},
+          "beforeHandshake": false
+        },
+        "topologyVersion": null,
+        "setName": null,
+        "setVersion": null,
+        "electionId": null,
+        "logicalSessionTimeoutMinutes": null,
+        "maxMessageSizeBytes": null,
+        "maxWriteBatchSize": null,
+        "maxBsonObjectSize": null,
+        "primary": null,
+        "me": null,
+        "$clusterTime": null,
+        "iscryptd": false
+      }
+    },
+    "stale": false,
+    "compatible": true,
+    "heartbeatFrequencyMS": 10000,
+    "localThresholdMS": 15,
+    "setName": null,
+    "maxElectionId": null,
+    "maxSetVersion": null,
+    "commonWireVersion": 0,
+    "logicalSessionTimeoutMinutes": null
+  },
+  "cause": {
+    "type": "Unknown",
+    "servers": {
+      "localhost:27017": {
+        "address": "localhost:27017",
+        "type": "Unknown",
+        "hosts": [],
+        "passives": [],
+        "arbiters": [],
+        "tags": {},
+        "minWireVersion": 0,
+        "maxWireVersion": 0,
+        "roundTripTime": -1,
+        "minRoundTripTime": 0,
+        "lastUpdateTime": 798966203,
+        "lastWriteDate": 0,
+        "error": {
+          "errorLabelSet": {},
+          "beforeHandshake": false
+        },
+        "topologyVersion": null,
+        "setName": null,
+        "setVersion": null,
+        "electionId": null,
+        "logicalSessionTimeoutMinutes": null,
+        "maxMessageSizeBytes": null,
+        "maxWriteBatchSize": null,
+        "maxBsonObjectSize": null,
+        "primary": null,
+        "me": null,
+        "$clusterTime": null,
+        "iscryptd": false
+      }
+    },
+    "stale": false,
+    "compatible": true,
+    "heartbeatFrequencyMS": 10000,
+    "localThresholdMS": 15,
+    "setName": null,
+    "maxElectionId": null,
+    "maxSetVersion": null,
+    "commonWireVersion": 0,
+    "logicalSessionTimeoutMinutes": null
+  },
+  "stack": "MongooseServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017\n    at _handleConnectionErrors (C:\\Users\\Dell\\web3\\veribite\\backend\\node_modules\\mongoose\\lib\\connection.js:1165:11)\n    at NativeConnection.openUri (C:\\Users\\Dell\\web3\\veribite\\backend\\node_modules\\mongoose\\lib\\connection.js:1096:11)\n    at async connectDB (C:\\Users\\Dell\\web3\\veribite\\backend\\dist\\app.js:73:9)\n    at async startServer (C:\\Users\\Dell\\web3\\veribite\\backend\\dist\\app.js:98:9)"
+}
+2025-09-26 17:56:00 [[31merror[39m]: Failed to connect to MongoDB: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017 {
+  "errorLabelSet": {},
+  "reason": {
+    "type": "Unknown",
+    "servers": {
+      "localhost:27017": {
+        "address": "localhost:27017",
+        "type": "Unknown",
+        "hosts": [],
+        "passives": [],
+        "arbiters": [],
+        "tags": {},
+        "minWireVersion": 0,
+        "maxWireVersion": 0,
+        "roundTripTime": -1,
+        "minRoundTripTime": 0,
+        "lastUpdateTime": 805717937,
+        "lastWriteDate": 0,
+        "error": {
+          "errorLabelSet": {},
+          "beforeHandshake": false
+        },
+        "topologyVersion": null,
+        "setName": null,
+        "setVersion": null,
+        "electionId": null,
+        "logicalSessionTimeoutMinutes": null,
+        "maxMessageSizeBytes": null,
+        "maxWriteBatchSize": null,
+        "maxBsonObjectSize": null,
+        "primary": null,
+        "me": null,
+        "$clusterTime": null,
+        "iscryptd": false
+      }
+    },
+    "stale": false,
+    "compatible": true,
+    "heartbeatFrequencyMS": 10000,
+    "localThresholdMS": 15,
+    "setName": null,
+    "maxElectionId": null,
+    "maxSetVersion": null,
+    "commonWireVersion": 0,
+    "logicalSessionTimeoutMinutes": null
+  },
+  "cause": {
+    "type": "Unknown",
+    "servers": {
+      "localhost:27017": {
+        "address": "localhost:27017",
+        "type": "Unknown",
+        "hosts": [],
+        "passives": [],
+        "arbiters": [],
+        "tags": {},
+        "minWireVersion": 0,
+        "maxWireVersion": 0,
+        "roundTripTime": -1,
+        "minRoundTripTime": 0,
+        "lastUpdateTime": 805717937,
+        "lastWriteDate": 0,
+        "error": {
+          "errorLabelSet": {},
+          "beforeHandshake": false
+        },
+        "topologyVersion": null,
+        "setName": null,
+        "setVersion": null,
+        "electionId": null,
+        "logicalSessionTimeoutMinutes": null,
+        "maxMessageSizeBytes": null,
+        "maxWriteBatchSize": null,
+        "maxBsonObjectSize": null,
+        "primary": null,
+        "me": null,
+        "$clusterTime": null,
+        "iscryptd": false
+      }
+    },
+    "stale": false,
+    "compatible": true,
+    "heartbeatFrequencyMS": 10000,
+    "localThresholdMS": 15,
+    "setName": null,
+    "maxElectionId": null,
+    "maxSetVersion": null,
+    "commonWireVersion": 0,
+    "logicalSessionTimeoutMinutes": null
+  },
+  "stack": "MongooseServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017\n    at _handleConnectionErrors (C:\\Users\\Dell\\web3\\veribite\\backend\\node_modules\\mongoose\\lib\\connection.js:1165:11)\n    at NativeConnection.openUri (C:\\Users\\Dell\\web3\\veribite\\backend\\node_modules\\mongoose\\lib\\connection.js:1096:11)\n    at async connectDB (C:\\Users\\Dell\\web3\\veribite\\backend\\src\\app.ts:96:5)\n    at async startServer (C:\\Users\\Dell\\web3\\veribite\\backend\\src\\app.ts:129:5)"
+}
+2025-09-26 17:59:19 [[31merror[39m]: Failed to connect to MongoDB: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017 {
+  "errorLabelSet": {},
+  "reason": {
+    "type": "Unknown",
+    "servers": {
+      "localhost:27017": {
+        "address": "localhost:27017",
+        "type": "Unknown",
+        "hosts": [],
+        "passives": [],
+        "arbiters": [],
+        "tags": {},
+        "minWireVersion": 0,
+        "maxWireVersion": 0,
+        "roundTripTime": -1,
+        "minRoundTripTime": 0,
+        "lastUpdateTime": 805917347,
+        "lastWriteDate": 0,
+        "error": {
+          "errorLabelSet": {},
+          "beforeHandshake": false
+        },
+        "topologyVersion": null,
+        "setName": null,
+        "setVersion": null,
+        "electionId": null,
+        "logicalSessionTimeoutMinutes": null,
+        "maxMessageSizeBytes": null,
+        "maxWriteBatchSize": null,
+        "maxBsonObjectSize": null,
+        "primary": null,
+        "me": null,
+        "$clusterTime": null,
+        "iscryptd": false
+      }
+    },
+    "stale": false,
+    "compatible": true,
+    "heartbeatFrequencyMS": 10000,
+    "localThresholdMS": 15,
+    "setName": null,
+    "maxElectionId": null,
+    "maxSetVersion": null,
+    "commonWireVersion": 0,
+    "logicalSessionTimeoutMinutes": null
+  },
+  "cause": {
+    "type": "Unknown",
+    "servers": {
+      "localhost:27017": {
+        "address": "localhost:27017",
+        "type": "Unknown",
+        "hosts": [],
+        "passives": [],
+        "arbiters": [],
+        "tags": {},
+        "minWireVersion": 0,
+        "maxWireVersion": 0,
+        "roundTripTime": -1,
+        "minRoundTripTime": 0,
+        "lastUpdateTime": 805917347,
+        "lastWriteDate": 0,
+        "error": {
+          "errorLabelSet": {},
+          "beforeHandshake": false
+        },
+        "topologyVersion": null,
+        "setName": null,
+        "setVersion": null,
+        "electionId": null,
+        "logicalSessionTimeoutMinutes": null,
+        "maxMessageSizeBytes": null,
+        "maxWriteBatchSize": null,
+        "maxBsonObjectSize": null,
+        "primary": null,
+        "me": null,
+        "$clusterTime": null,
+        "iscryptd": false
+      }
+    },
+    "stale": false,
+    "compatible": true,
+    "heartbeatFrequencyMS": 10000,
+    "localThresholdMS": 15,
+    "setName": null,
+    "maxElectionId": null,
+    "maxSetVersion": null,
+    "commonWireVersion": 0,
+    "logicalSessionTimeoutMinutes": null
+  },
+  "stack": "MongooseServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017\n    at _handleConnectionErrors (C:\\Users\\Dell\\web3\\veribite\\backend\\node_modules\\mongoose\\lib\\connection.js:1165:11)\n    at NativeConnection.openUri (C:\\Users\\Dell\\web3\\veribite\\backend\\node_modules\\mongoose\\lib\\connection.js:1096:11)\n    at async connectDB (C:\\Users\\Dell\\web3\\veribite\\backend\\src\\app.ts:96:5)\n    at async startServer (C:\\Users\\Dell\\web3\\veribite\\backend\\src\\app.ts:129:5)"
+}

@@ -1,0 +1,525 @@
+{
+	"info": {
+		"_postman_id": "veribite-backend-api",
+		"name": "VeriBite Food Prediction Backend API",
+		"description": "Complete API collection for VeriBite food prediction backend with all endpoints and examples",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Health & Status",
+			"item": [
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/health",
+							"host": ["{{BASE_URL}}"],
+							"path": ["health"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Predictions API",
+			"item": [
+				{
+					"name": "Create Prediction (Ingredient)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userAddress\": \"0x1234567890123456789012345678901234567890\",\n  \"predictionText\": \"These organic tomatoes will taste amazing and be perfectly fresh\",\n  \"category\": \"Ingredient\",\n  \"relayerMode\": true\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/predictions",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "predictions"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Prediction (Dish)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userAddress\": \"0x1234567890123456789012345678901234567890\",\n  \"predictionText\": \"This pizza will be the best dish with perfect crispy crust\",\n  \"relayerMode\": true\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/predictions",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "predictions"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Prediction (Restaurant)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userAddress\": \"0x1234567890123456789012345678901234567890\",\n  \"predictionText\": \"This restaurant will serve excellent food with great service\",\n  \"category\": \"Restaurant\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/predictions",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "predictions"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Predictions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/predictions",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "predictions"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Predictions with Pagination",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/predictions?page=1&limit=10",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "predictions"],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Predictions by Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/predictions?category=Ingredient",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "predictions"],
+							"query": [
+								{
+									"key": "category",
+									"value": "Ingredient"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Predictions by Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/predictions?status=pending",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "predictions"],
+							"query": [
+								{
+									"key": "status",
+									"value": "pending"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Specific Prediction",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/predictions/{{PREDICTION_ID}}",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "predictions", "{{PREDICTION_ID}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sync Prediction with Blockchain",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/predictions/{{PREDICTION_ID}}/sync",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "predictions", "{{PREDICTION_ID}}", "sync"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin API",
+			"item": [
+				{
+					"name": "Get Platform Statistics",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-admin-api-key",
+								"value": "{{ADMIN_API_KEY}}"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/admin/stats",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "admin", "stats"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Predictions (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-admin-api-key",
+								"value": "{{ADMIN_API_KEY}}"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/admin/predictions",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "admin", "predictions"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Admin Predictions with Filters",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-admin-api-key",
+								"value": "{{ADMIN_API_KEY}}"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/admin/predictions?page=1&limit=20&status=pending&category=Ingredient",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "admin", "predictions"],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "status",
+									"value": "pending"
+								},
+								{
+									"key": "category",
+									"value": "Ingredient"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mark Prediction as Correct",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-admin-api-key",
+								"value": "{{ADMIN_API_KEY}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"predictionId\": 1,\n  \"outcome\": \"Correct\",\n  \"reason\": \"Prediction verified as accurate through independent verification\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/admin/mark-outcome",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "admin", "mark-outcome"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mark Prediction as Incorrect",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-admin-api-key",
+								"value": "{{ADMIN_API_KEY}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"predictionId\": 2,\n  \"outcome\": \"Incorrect\",\n  \"reason\": \"Prediction did not match actual outcome\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/admin/mark-outcome",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "admin", "mark-outcome"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mark Prediction as Disputed",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-admin-api-key",
+								"value": "{{ADMIN_API_KEY}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"predictionId\": 3,\n  \"outcome\": \"Disputed\",\n  \"reason\": \"Conflicting evidence requires further review\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/admin/mark-outcome",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "admin", "mark-outcome"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Distribute Single Reward",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-admin-api-key",
+								"value": "{{ADMIN_API_KEY}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"predictionId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/admin/distribute-reward",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "admin", "distribute-reward"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Batch Distribute Rewards",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-admin-api-key",
+								"value": "{{ADMIN_API_KEY}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"predictionIds\": [1, 2, 3, 4, 5]\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/admin/batch-distribute",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "admin", "batch-distribute"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Error Handling Examples",
+			"item": [
+				{
+					"name": "Invalid Ethereum Address",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userAddress\": \"invalid-address\",\n  \"predictionText\": \"Test prediction\",\n  \"category\": \"Ingredient\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/predictions",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "predictions"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Missing Required Fields",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"predictionText\": \"Test without address\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/predictions",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "predictions"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid Prediction ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/predictions/invalid-id",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "predictions", "invalid-id"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unauthorized Admin Access",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-admin-api-key",
+								"value": "invalid-key"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/admin/stats",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "admin", "stats"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Route Not Found",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/nonexistent",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "nonexistent"]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:5000",
+			"type": "string"
+		},
+		{
+			"key": "ADMIN_API_KEY",
+			"value": "your_admin_api_key_here",
+			"type": "string"
+		},
+		{
+			"key": "PREDICTION_ID",
+			"value": "60d5ec49f1a2c8b1f8e4e1a1",
+			"type": "string"
+		}
+	]
+}
