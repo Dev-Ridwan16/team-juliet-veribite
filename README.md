@@ -1,6 +1,6 @@
 # VeriBite Food Prediction Platform
 
-**NOTICE: Due to current restrictions on the Blogdag API, we were unable to implement it in this project. However, the system is fully compatible, and Blogdag will be integrated once the API restrictions are lifted.**
+**NOTICE: Due to current restrictions on the Blogdag API (The credit tokenization), we were unable to implement it in this project. However, the system is fully compatible, and Blogdag will be integrated once the API restrictions are lifted.**
 
 **Verify your food predictions, one bite at a time.**
 
