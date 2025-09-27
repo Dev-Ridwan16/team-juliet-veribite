@@ -1,3 +1,6 @@
+https://www.awesomescreenshot.com/video/44689548?key=0907bc9b8538e8c493a2a384dfb5c888
+
+
 # VeriBite Food Prediction Platform
 
 **NOTICE: Due to current restrictions on the Blogdag API (The credit tokenization), we were unable to implement it in this project. However, the system is fully compatible, and Blogdag will be integrated once the API restrictions are lifted.**
