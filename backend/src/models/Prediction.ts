@@ -143,6 +143,7 @@ const PredictionSchema = new Schema<IPrediction>(
       type: Number,
       min: 1,
       sparse: true, // Allow null but create index for non-null values
+      index: true, // Create sparse index here
     },
 
     onChainTxHash: {
@@ -267,7 +268,6 @@ const PredictionSchema = new Schema<IPrediction>(
 PredictionSchema.index({ predictorIndex: 1, createdAt: -1 }); // User predictions by date
 PredictionSchema.index({ categoryIndex: 1, statusIndex: 1 }); // Category + status queries
 PredictionSchema.index({ statusIndex: 1, createdAt: -1 }); // Status-based queries by date
-PredictionSchema.index({ onChainId: 1 }, { sparse: true }); // On-chain ID lookup
 PredictionSchema.index({ ipfsCid: 1 }, { unique: true }); // Unique IPFS CID
 PredictionSchema.index({ resultHash: 1 }); // Hash-based lookups
 

@@ -1,53 +1,106 @@
-# VeriBite
+# VeriBite Food Prediction Platform
 
-**Verified consumption, predicted one bite at a time.**
+**NOTICE: Due to current restrictions on the Blogdag API, we were unable to implement it in this project. However, the system is fully compatible, and Blogdag will be integrated once the API restrictions are lifted.**
 
-VeriBite is a modern Web3 dApp built with Next.js, TailwindCSS, Wagmi, and Ethers.js that allows users to make food consumption predictions, stake ETH, and earn rewards for accurate predictions.
+**Verify your food predictions, one bite at a time.**
+
+VeriBite is a decentralized Web3 application that revolutionizes food consumption predictions through blockchain technology. Users can make predictions about food trends, consumption patterns, and culinary outcomes while staking ETH to back their confidence. Accurate predictions earn rewards, creating a gamified ecosystem for food enthusiasts and industry experts.
+
+## 🍽️ What is VeriBite?
+
+VeriBite transforms food prediction into a decentralized, stake-based game where:
+
+- **Food Enthusiasts** predict consumption trends, restaurant success, food popularity, and culinary outcomes
+- **Industry Experts** leverage their knowledge for rewards while sharing insights with the community
+- **Data Analysts** access crowd-sourced food prediction data for market research
+- **Blockchain Users** earn ETH rewards for accurate food-related predictions
+
+## 🎯 Food Prediction Categories
+
+- **🥘 Food Trends**: Predict the next viral food, seasonal favorites, or ingredient popularity
+- **🍕 Restaurant Success**: Forecast new restaurant ratings, popularity, or survival rates
+- **🛒 Consumption Patterns**: Predict food sales, dietary shifts, or market demand
+- **🍎 Health & Nutrition**: Forecast adoption of health trends, superfood popularity
+- **🌮 Regional Cuisine**: Predict the spread of regional foods to new markets
+- **🎂 Seasonal Predictions**: Holiday food sales, seasonal menu changes, harvest outcomes
 
 ## 🎨 Brand Identity
 
-- **Name**: VeriBite
-- **Tagline**: "Verified consumption, predicted one bite at a time."
-- **Style**: Clean, futuristic, with light food accents
-- **Primary Colors**: Green (#00A86B) + White + Neutral Gray
+- **Name**: VeriBite Food Prediction Platform
+- **Tagline**: "Verify your food predictions, one bite at a time."
+- **Focus**: Decentralized food industry predictions and trend forecasting
+- **Style**: Clean, modern, with vibrant food-inspired accents
+- **Primary Colors**: Fresh Green (#00A86B) + Orange (#FF6B35) + Neutral Gray
 
-## ⚡ Features
+## 🚀 Key Features
 
-- 🔗 **Wallet Connection**: Seamless Web3 wallet integration with RainbowKit
-- 📝 **Prediction System**: Submit food consumption predictions with ETH stakes
-- 🏆 **Reward Mechanism**: Earn rewards for accurate predictions
-- 👥 **Community Feed**: View and interact with community predictions
-- 🛡️ **Admin Panel**: Admin-only interface for managing predictions and rewards
-- 📱 **Responsive Design**: Mobile-first, modern UI/UX
+- 🔗 **Wallet Integration**: Seamless Web3 wallet connection with RainbowKit
+- 🍽️ **Food Prediction System**: Submit detailed food industry predictions with ETH stakes
+- 📊 **Prediction Categories**: Organized by food trends, restaurants, consumption, health, and regions
+- 🏆 **Reward System**: Earn ETH rewards for accurate food predictions
+- 👥 **Community Insights**: Access crowd-sourced food industry intelligence
+- 🛡️ **Admin Dashboard**: Verify predictions and manage community rewards
+- 📱 **Mobile-First Design**: Optimized for food enthusiasts on the go
+- � **Analytics Dashboard**: Track prediction accuracy and food trend data
 
-## 🛠 Tech Stack
+## 🍕 How It Works
 
-- **Framework**: Next.js 14 (App Router)
-- **Styling**: TailwindCSS
-- **Web3**: Wagmi + RainbowKit + Ethers.js
-- **Language**: TypeScript
-- **State Management**: React Query (@tanstack/react-query)
+1. **Connect Your Wallet**: Link your Web3 wallet to start predicting
+2. **Choose Food Category**: Select from trends, restaurants, consumption, or health predictions
+3. **Make Your Prediction**: Submit detailed food predictions with reasoning
+4. **Stake Your Confidence**: Back predictions with ETH to show confidence
+5. **Community Validation**: Predictions are verified by community consensus
+6. **Earn Rewards**: Accurate predictions earn ETH rewards and reputation points
+
+## 🛠 Technology Stack
+
+- **Frontend**: Next.js 14 with App Router
+- **Styling**: TailwindCSS with food-themed design system
+- **Web3 Integration**: Wagmi + RainbowKit + Ethers.js
+- **Smart Contracts**: Solidity on Ethereum/Polygon
+- **Backend API**: Node.js + Express + MongoDB
+- **Language**: TypeScript for type safety
+- **State Management**: React Query for data fetching
+- **Deployment**: Vercel (Frontend) + Railway (Backend)
 
 ## 📂 Project Structure
 
 ```
-/frontend
+/src
+  /app
+    /components
+      Navbar.tsx                    # Navigation with wallet connection
+      PredictionForm.tsx           # Food prediction submission form
+      PredictionsFeed.tsx          # Community food predictions feed
+      AdminPanel.tsx               # Admin interface for prediction management
+    /predictions
+      page.tsx                     # Food predictions marketplace
+    /admin
+      page.tsx                     # Admin dashboard
+    layout.tsx                     # Global layout with Web3 providers
+    page.tsx                       # Landing page showcasing food predictions
+  /lib
+    contract.ts                    # Smart contract integration
+    wagmi.ts                       # Web3 wallet configuration
+    api.ts                         # Backend API integration
+    error-handling.ts              # Web3 error handling utilities
+  /hooks
+    useWeb3ErrorHandling.ts        # Custom error handling hooks
+  /components
+    ErrorHandling.tsx              # Error display components
+/backend
   /src
-    /app
-      /components
-        Navbar.tsx              # Navigation with wallet connection
-        PredictionForm.tsx      # Form to submit new predictions
-        PredictionsFeed.tsx     # Display community predictions
-        AdminPanel.tsx          # Admin interface for managing predictions
-      /predictions
-        page.tsx                # Predictions page
-      /admin
-        page.tsx                # Admin panel page
-      layout.tsx                # Global layout with providers
-      page.tsx                  # Landing page
-    /lib
-      contract.ts               # Contract integration and helper functions
-      wagmi.ts                  # Wagmi configuration
+    /routes
+      predictions.ts               # Food prediction API routes
+      admin.ts                     # Admin management routes
+    /models
+      Prediction.ts                # Food prediction data model
+    /services
+      classifier.ts                # Food classification service
+      contract.ts                  # Blockchain integration service
+    app.ts                         # Express application setup
+/contracts
+  VeriBiteFoodPredictor.sol       # Main prediction smart contract
   tailwind.config.ts           # Tailwind configuration with VeriBite colors
   package.json
 ```
@@ -97,67 +150,112 @@ VeriBite is a modern Web3 dApp built with Next.js, TailwindCSS, Wagmi, and Ether
 6. **Open your browser**:
    Navigate to [http://localhost:3000](http://localhost:3000)
 
-## 🔗 Contract Integration
+## 🔗 Smart Contract Integration
 
-The dApp expects a Solidity contract with the following functions:
+VeriBite uses the `VeriBiteFoodPredictor` smart contract deployed on Ethereum Sepolia testnet.
 
 ### Core Functions
 
-- `submitPrediction(string predictionText) payable` - Submit a new prediction
-- `getAllPredictions() view returns (Prediction[])` - Get all predictions
-- `markOutcome(uint256 predictionId, uint8 outcome)` - Mark prediction outcome (admin)
-- `distributeReward(uint256 predictionId)` - Distribute rewards (admin)
-- `owner() view returns (address)` - Get contract owner
+- `submitPrediction(string foodPredictionText) payable` - Submit food predictions with ETH stake
+- `getAllPredictions() view returns (Prediction[])` - Retrieve all community predictions
+- `markOutcome(uint256 predictionId, bool correct)` - Admin function to verify predictions
+- `distributeReward(uint256 predictionId)` - Distribute rewards to accurate predictors
+- `getContractStats() view returns (...)` - Get platform statistics and metrics
 
-### Data Structure
+### Prediction Data Structure
 
 ```solidity
 struct Prediction {
-    uint256 id;
-    address predictor;
-    string predictionText;
-    uint256 timestamp;
-    uint256 stake;
-    uint8 status; // 0: Pending, 1: Correct, 2: Incorrect
+    uint256 id;              // Unique prediction identifier
+    address user;            // Predictor's wallet address
+    string text;             // Detailed food prediction
+    uint256 timestamp;       // Prediction submission time
+    uint256 stake;           // ETH staked on prediction
+    uint8 status;           // 0: Pending, 1: Correct, 2: Incorrect
 }
 ```
 
-## 🎯 Usage
+### Contract Address
 
-### For Users
+- **Sepolia Testnet**: `0xAC93ef07c3861b071169F34D610027A79DF3B742`
+- **Network**: Ethereum Sepolia
+- **Explorer**: [View on Etherscan](https://sepolia.etherscan.io/address/0xAC93ef07c3861b071169F34D610027A79DF3B742)
 
-1. **Connect Wallet**: Click "Connect Wallet" in the navigation
-2. **Make Predictions**: Go to `/predictions` and submit your food consumption predictions
-3. **View Community**: Browse all community predictions and their status
-4. **Earn Rewards**: Get rewards when your predictions are marked correct
+## 🍽️ Example Food Predictions
 
-### For Admins
+### Trending Foods
 
-1. **Access Admin Panel**: Navigate to `/admin` (only visible to contract owner)
-2. **Review Predictions**: View all submitted predictions
-3. **Mark Outcomes**: Mark predictions as correct or incorrect
-4. **Distribute Rewards**: Send rewards to users with correct predictions
+- "Plant-based meat alternatives will capture 25% of the burger market by Q2 2025"
+- "Korean corn dogs will become the next viral street food trend in major US cities"
+- "Oat milk will surpass almond milk in coffee shop adoption within 6 months"
 
-## 🎨 Styling Guidelines
+### Restaurant Success
 
-### Colors
+- "The new Italian restaurant on 5th Avenue will receive 4+ stars within 30 days"
+- "Fast-casual Mediterranean chains will expand 200% in suburban markets this year"
 
-- Primary: `#00A86B` (VeriBite Green)
-- Secondary: White and Neutral Grays
-- Gradients: Used for hero sections and CTAs
+### Health & Nutrition Trends
 
-### Typography
+- "Ashwagandha supplements will see 300% growth in mainstream adoption"
+- "Intermittent fasting apps will gain 5M+ users before year-end"
 
-- Font: Inter (Google Fonts)
-- Headings: Bold, large scales
-- Body: Clean, readable hierarchy
+### Regional Cuisine Expansion
 
-### Components
+- "Nigerian jollof rice will appear on 50+ US restaurant menus by summer"
+- "Japanese convenience store model will launch in 10+ US cities"
 
-- Rounded corners (xl, 2xl for cards)
-- Subtle shadows and borders
-- Hover animations and transitions
-- Responsive grid layouts
+## 🎯 For Different Users
+
+### Food Enthusiasts & Bloggers
+
+1. **Connect Wallet**: Link MetaMask or preferred Web3 wallet
+2. **Browse Categories**: Explore food trends, restaurant predictions, health forecasts
+3. **Make Predictions**: Share insights on upcoming food trends with detailed reasoning
+4. **Build Reputation**: Earn credibility points and ETH rewards for accurate predictions
+
+### Industry Professionals
+
+1. **Leverage Expertise**: Use professional knowledge to make high-confidence predictions
+2. **Higher Stakes**: Back predictions with larger ETH amounts for bigger rewards
+3. **Market Intelligence**: Access crowd-sourced data for business insights
+4. **Network Building**: Connect with other food industry professionals
+
+### Data Researchers
+
+1. **Access Trend Data**: Analyze community predictions for market research
+2. **Historical Analysis**: Study prediction accuracy and food trend evolution
+3. **Export Insights**: Use prediction data for academic or commercial research
+
+### Platform Administrators
+
+1. **Access Admin Panel**: Navigate to `/admin` (contract owner only)
+2. **Verify Predictions**: Review and validate prediction outcomes with evidence
+3. **Manage Rewards**: Distribute ETH rewards to accurate predictors
+4. **Platform Analytics**: Monitor community engagement and prediction quality
+
+## 🎨 Food-Themed Design System
+
+### Color Palette
+
+- **Primary**: Fresh Green `#00A86B` (represents fresh ingredients and growth)
+- **Secondary**: Warm Orange `#FF6B35` (appetite-stimulating and energetic)
+- **Accent**: Deep Purple `#6B46C1` (premium, sophisticated dining)
+- **Neutral**: Clean Grays for backgrounds and text
+- **Success**: Bright Green for accurate predictions
+- **Warning**: Golden Yellow for pending predictions
+
+### Food-Inspired Typography
+
+- **Primary Font**: Inter (clean, modern, highly readable)
+- **Headers**: Bold weights with food-related metaphors ("Bite-sized insights", "Savor the predictions")
+- **Icons**: Custom food icons (🍽️, 🥘, 🍕, 🍎, 🌮, 🎂)
+
+### Component Design Philosophy
+
+- **Card Layouts**: Resemble menu cards with rounded corners and subtle shadows
+- **Buttons**: Appetite-inspiring hover effects with warm color transitions
+- **Forms**: Clean inputs with food category organization
+- **Navigation**: Simple, intuitive like a restaurant menu structure
 
 ## 🔧 Configuration
 
@@ -207,44 +305,55 @@ The dApp is built mobile-first and works seamlessly across:
 - Responsive design patterns
 - Web3 best practices
 
-## 🚀 Deployment
+## 🚀 Deployment & Architecture
 
-1. **Build the project**:
+### Frontend (Vercel)
 
-   ```bash
-   npm run build
-   ```
+- **URL**: Deployed on Vercel with automatic GitHub integration
+- **Environment**: Next.js 14 with optimized food-themed components
+- **Web3 Integration**: RainbowKit wallet connection with Sepolia testnet support
 
-2. **Deploy to your preferred platform**:
+### Backend (Railway)
 
-   - Vercel (recommended)
-   - Netlify
-   - Traditional hosting
+- **API URL**: `team-juliet-veribite-production.up.railway.app`
+- **Database**: MongoDB Atlas for prediction data and user analytics
+- **Services**: Food classification, blockchain integration, admin management
 
-3. **Environment Variables**:
-   Set up production environment variables on your deployment platform.
+### Smart Contract (Ethereum Sepolia)
 
-## 🤝 Contributing
+- **Address**: `0xAC93ef07c3861b071169F34D610027A79DF3B742`
+- **Network**: Ethereum Sepolia Testnet
+- **Features**: Staking, reward distribution, prediction verification
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+## 📊 Platform Analytics
 
-## 📄 License
+Track your food prediction performance:
 
-MIT License - see LICENSE file for details.
+- **Accuracy Score**: Personal prediction success rate
+- **Reputation Points**: Community-driven credibility system
+- **Earnings History**: ETH rewards from accurate predictions
+- **Category Expertise**: Specialized knowledge in food areas
+- **Community Ranking**: Leaderboard position among predictors
 
-## 🆘 Support
+## 🤝 Contributing to Food Predictions
 
-For questions or issues:
+1. **Fork the Repository**: Create your own copy
+2. **Food Focus**: Ensure contributions align with food prediction theme
+3. **Quality Standards**: Maintain high-quality prediction categories
+4. **Community Guidelines**: Follow food industry prediction ethics
+5. **Submit Pull Request**: Contribute improvements and new features
 
-- Check the documentation
-- Review contract integration requirements
-- Ensure wallet connectivity
-- Verify network compatibility
+## 🆘 Support & Community
+
+For questions about food predictions or technical issues:
+
+- **Documentation**: Comprehensive guides for all user types
+- **Community Discord**: Connect with other food prediction enthusiasts
+- **Technical Support**: Blockchain integration and wallet connection help
+- **Food Industry Insights**: Access expert analysis and trend discussions
 
 ---
 
-**Built with ❤️ for the Web3 community**
+**🍽️ Built for food enthusiasts, powered by blockchain technology**
+
+_VeriBite: Where culinary intuition meets decentralized verification_

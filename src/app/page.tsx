@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
@@ -18,25 +19,32 @@ export default function Home() {
           <div className="text-center">
             {/* Logo Animation */}
             <div className="mb-8">
-              <div className="w-20 h-20 gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-6 animate-float shadow-lg">
-                <span className="text-white font-bold text-2xl">V</span>
+              <div className=" h-[200px] w-[200px] flex items-center justify-center mx-auto animate-float">
+                <Image
+                  src={require("../../public/Veribite Logo[1].png")}
+                  alt="VeriBite Logo"
+                  fill
+                />
               </div>
             </div>
 
             {/* Main Heading */}
-            <h1 className="text-5xl lg:text-7xl font-bold text-gray-900 mb-6 tracking-tight">
-              <span className="bg-gradient-to-r from-[#00a86b] to-[#007bff] bg-clip-text text-transparent">
-                VeriBite
+            <h1 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-6 leading-[60px] mt-[-70px]">
+              <span className="bg-gradient-to-r from-[#00a86b] to-[#007bff] bg-clip-text leading-6 text-transparent">
+                Verified consumption, predicted <br />
+                <span className="text-neutral-600 font-semibold">
+                  one bite at a time
+                </span>
               </span>
             </h1>
 
             {/* Tagline */}
-            <p className="text-xl lg:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+            {/* <p className="text-xl lg:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
               Verified consumption, predicted{" "}
               <span className="text-primary-600 font-semibold">
                 one bite at a time
               </span>
-            </p>
+            </p> */}
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">

@@ -9,6 +9,7 @@ import { WagmiProvider } from "wagmi";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { config } from "@/lib/wagmi";
 import Navbar from "./components/Navbar";
+import NextTopLoader from "nextjs-toploader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -39,6 +40,7 @@ export default function RootLayout({
                 {/* Background decoration */}
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,_rgba(0,168,107,0.15)_1px,_transparent_0)] bg-[size:20px_20px] animate-pulse"></div>
                 <div className="relative z-10">
+                  <NextTopLoader />
                   <Navbar />
                   <main>{children}</main>
                 </div>

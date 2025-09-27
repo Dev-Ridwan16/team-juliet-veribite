@@ -1,6 +1,7 @@
 "use client";
 
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -14,15 +15,14 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-white/80 backdrop-blur-lg border-b border-gray-200/50 sticky top-0 z-50">
+    <nav className="bg-white/80 backdrop-blur-lg border-b border-gray-200/50 sticky top-0 z-50 h-[100px] ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-[90px]">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 gradient-primary rounded-full flex items-center justify-center shadow-md">
-              <span className="text-white font-bold text-sm">V</span>
+          <Link href="/" className="flex items-center space-x-2 w-[200px] relative py-4 mt-5">
+            <div className="w-[150px] h-[150px]">
+                <Image src={require("../../../public/Veribite Logo[1].png")} alt="VeriBite Logo" fill />
             </div>
-            <span className="text-xl font-bold text-gray-900">VeriBite</span>
           </Link>
 
           {/* Navigation Links */}

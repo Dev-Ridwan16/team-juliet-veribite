@@ -1,5 +1,11 @@
 import { ethers } from "ethers";
 import { Address } from "viem";
+import {
+  retryWeb3Operation,
+  retryWithCircuitBreakerHandling,
+  parseWeb3Error,
+  logWeb3Error,
+} from "./error-handling";
 
 // Real deployed contract address and ABI - SEPOLIA DEPLOYMENT
 export const CONTRACT_ADDRESS: Address =
@@ -437,52 +443,59 @@ export async function submitPrediction(
   stake: string,
   signer: ethers.Signer
 ) {
-  try {
-    const contract = new ethers.Contract(
-      CONTRACT_ADDRESS,
-      CONTRACT_ABI,
-      signer
-    );
+  return retryWithCircuitBreakerHandling(
+    async () => {
+      const contract = new ethers.Contract(
+        CONTRACT_ADDRESS,
+        CONTRACT_ABI,
+        signer
+      );
 
-    // Convert stake to wei
-    const stakeWei = ethers.parseEther(stake);
+      // Convert stake to wei
+      const stakeWei = ethers.parseEther(stake);
 
-    const tx = await contract.submitPrediction(text, {
-      value: stakeWei,
-    });
+      const tx = await contract.submitPrediction(text, {
+        value: stakeWei,
+      });
 
-    await tx.wait();
-    return tx;
-  } catch (error) {
-    console.error("Error submitting prediction:", error);
-    throw error;
-  }
+      await tx.wait();
+      return tx;
+    },
+    () => {
+      console.log(
+        "Circuit breaker detected during prediction submission, retrying..."
+      );
+    }
+  );
 }
 
 // Get all predictions
 export async function getAllPredictions(provider: ethers.Provider) {
-  try {
-    const contract = new ethers.Contract(
-      CONTRACT_ADDRESS,
-      CONTRACT_ABI,
-      provider
-    );
-    const predictions = await contract.getAllPredictions();
+  return retryWeb3Operation(
+    async () => {
+      const contract = new ethers.Contract(
+        CONTRACT_ADDRESS,
+        CONTRACT_ABI,
+        provider
+      );
+      const predictions = await contract.getAllPredictions();
 
-    return predictions.map((pred: any) => ({
-      id: pred.id,
-      user: pred.user,
-      predictor: pred.user, // Alias for backward compatibility
-      text: pred.text,
-      predictionText: pred.text, // Alias for backward compatibility
-      timestamp: pred.timestamp,
-      stake: pred.stake,
-      status: Number(pred.status) as PredictionStatus,
-    }));
-  } catch (error) {
-    console.error("Error fetching predictions:", error);
-    throw error;
-  }
+      return predictions.map((pred: any) => ({
+        id: pred.id,
+        user: pred.user,
+        predictor: pred.user, // Alias for backward compatibility
+        text: pred.text,
+        predictionText: pred.text, // Alias for backward compatibility
+        timestamp: pred.timestamp,
+        stake: pred.stake,
+        status: Number(pred.status) as PredictionStatus,
+      }));
+    },
+    {
+      maxAttempts: 3,
+      baseDelay: 1000,
+    }
+  );
 }
 
 // Contract interaction functions - legacy format for compatibility
@@ -519,24 +532,41 @@ export const contractFunctions = {
     signer: ethers.Signer,
     predictionId: number
   ): Promise<ethers.ContractTransactionResponse> => {
-    const contract = new ethers.Contract(
-      CONTRACT_ADDRESS,
-      CONTRACT_ABI,
-      signer
+    return retryWithCircuitBreakerHandling(
+      async () => {
+        const contract = new ethers.Contract(
+          CONTRACT_ADDRESS,
+          CONTRACT_ABI,
+          signer
+        );
+        const tx = await contract.distributeReward(predictionId);
+        await tx.wait();
+        return tx;
+      },
+      () => {
+        console.log(
+          "Circuit breaker detected during reward distribution, retrying..."
+        );
+      }
     );
-    const tx = await contract.distributeReward(predictionId);
-    await tx.wait();
-    return tx;
   },
 
   // Get contract owner
   getOwner: async (provider: ethers.Provider): Promise<Address> => {
-    const contract = new ethers.Contract(
-      CONTRACT_ADDRESS,
-      CONTRACT_ABI,
-      provider
+    return retryWeb3Operation(
+      async () => {
+        const contract = new ethers.Contract(
+          CONTRACT_ADDRESS,
+          CONTRACT_ABI,
+          provider
+        );
+        return await contract.owner();
+      },
+      {
+        maxAttempts: 2,
+        baseDelay: 500,
+      }
     );
-    return await contract.owner();
   },
 };
 
@@ -586,40 +616,46 @@ export async function getUserPredictions(
   userAddress: string,
   provider: ethers.Provider
 ) {
-  try {
-    const contract = new ethers.Contract(
-      CONTRACT_ADDRESS,
-      CONTRACT_ABI,
-      provider
-    );
-    const predictions = await contract.getUserPredictions(userAddress);
-    return predictions;
-  } catch (error) {
-    console.error("Error fetching user predictions:", error);
-    throw error;
-  }
+  return retryWeb3Operation(
+    async () => {
+      const contract = new ethers.Contract(
+        CONTRACT_ADDRESS,
+        CONTRACT_ABI,
+        provider
+      );
+      const predictions = await contract.getUserPredictions(userAddress);
+      return predictions;
+    },
+    {
+      maxAttempts: 3,
+      baseDelay: 1000,
+    }
+  );
 }
 
 // Get contract statistics
 export async function getContractStats(provider: ethers.Provider) {
-  try {
-    const contract = new ethers.Contract(
-      CONTRACT_ADDRESS,
-      CONTRACT_ABI,
-      provider
-    );
-    const stats = await contract.getContractStats();
-    return {
-      totalPredictions: stats[0].toString(),
-      totalUsers: stats[1].toString(),
-      contractBalance: ethers.formatEther(stats[2]),
-      totalStake: ethers.formatEther(stats[3]),
-      totalRewards: ethers.formatEther(stats[4]),
-    };
-  } catch (error) {
-    console.error("Error fetching contract stats:", error);
-    throw error;
-  }
+  return retryWeb3Operation(
+    async () => {
+      const contract = new ethers.Contract(
+        CONTRACT_ADDRESS,
+        CONTRACT_ABI,
+        provider
+      );
+      const stats = await contract.getContractStats();
+      return {
+        totalPredictions: stats[0].toString(),
+        totalUsers: stats[1].toString(),
+        contractBalance: ethers.formatEther(stats[2]),
+        totalStake: ethers.formatEther(stats[3]),
+        totalRewards: ethers.formatEther(stats[4]),
+      };
+    },
+    {
+      maxAttempts: 3,
+      baseDelay: 1000,
+    }
+  );
 }
 
 // Admin function - mark prediction outcome
@@ -628,48 +664,58 @@ export async function markOutcome(
   correct: boolean,
   signer: ethers.Signer
 ) {
-  try {
-    const contract = new ethers.Contract(
-      CONTRACT_ADDRESS,
-      CONTRACT_ABI,
-      signer
-    );
-    const tx = await contract.markOutcome(predictionId, correct);
-    await tx.wait();
-    return tx;
-  } catch (error) {
-    console.error("Error marking outcome:", error);
-    throw error;
-  }
+  return retryWithCircuitBreakerHandling(
+    async () => {
+      const contract = new ethers.Contract(
+        CONTRACT_ADDRESS,
+        CONTRACT_ABI,
+        signer
+      );
+      const tx = await contract.markOutcome(predictionId, correct);
+      await tx.wait();
+      return tx;
+    },
+    () => {
+      console.log(
+        "Circuit breaker detected during outcome marking, retrying..."
+      );
+    }
+  );
 }
 
 // Get minimum stake requirement
 export async function getMinStake(provider: ethers.Provider) {
-  try {
-    const contract = new ethers.Contract(
-      CONTRACT_ADDRESS,
-      CONTRACT_ABI,
-      provider
-    );
-    const minStake = await contract.MIN_STAKE();
-    return ethers.formatEther(minStake);
-  } catch (error) {
-    console.error("Error getting min stake:", error);
-    throw error;
-  }
+  return retryWeb3Operation(
+    async () => {
+      const contract = new ethers.Contract(
+        CONTRACT_ADDRESS,
+        CONTRACT_ABI,
+        provider
+      );
+      const minStake = await contract.MIN_STAKE();
+      return ethers.formatEther(minStake);
+    },
+    {
+      maxAttempts: 2,
+      baseDelay: 500,
+    }
+  );
 }
 
 // Check if contract is paused
 export async function isPaused(provider: ethers.Provider) {
-  try {
-    const contract = new ethers.Contract(
-      CONTRACT_ADDRESS,
-      CONTRACT_ABI,
-      provider
-    );
-    return await contract.paused();
-  } catch (error) {
-    console.error("Error checking pause status:", error);
-    throw error;
-  }
+  return retryWeb3Operation(
+    async () => {
+      const contract = new ethers.Contract(
+        CONTRACT_ADDRESS,
+        CONTRACT_ABI,
+        provider
+      );
+      return await contract.paused();
+    },
+    {
+      maxAttempts: 2,
+      baseDelay: 500,
+    }
+  );
 }

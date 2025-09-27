@@ -1,157 +1,207 @@
-# VeriBite User Guide 📝
+# VeriBite Food Prediction Platform - User Guide 🍽️
 
-## Welcome to VeriBite - The Decentralized Prediction Platform
+## Welcome to VeriBite - Decentralized Food Predictions
 
-VeriBite is a blockchain-powered prediction platform where users can make predictions about future events, stake cryptocurrency, and earn rewards for accurate predictions. Built on Ethereum with a modern web interface.
+VeriBite is the premier blockchain-powered platform for food industry predictions. Make informed predictions about food trends, restaurant success, consumption patterns, and culinary outcomes while earning ETH rewards for accurate insights.
 
 ---
 
 ## 🚀 Quick Start Guide
 
-### Prerequisites
+### What You'll Need
 
-- Web browser with MetaMask extension installed
-- Some ETH for transactions (test ETH for development)
-- Internet connection
+- Web browser with MetaMask or compatible Web3 wallet
+- ETH for staking on predictions (Sepolia testnet ETH for testing)
+- Passion for food trends and industry insights!
 
-### Getting Started
+### Getting Started in 3 Steps
 
-1. Visit the VeriBite platform at `http://localhost:3001` (development)
-2. Connect your MetaMask wallet
-3. Start making predictions and earning rewards!
+1. **Visit VeriBite**: Go to the deployed platform or `http://localhost:3000` (development)
+2. **Connect Your Wallet**: Click "Connect Wallet" and approve the connection
+3. **Start Predicting**: Browse food categories and make your first prediction!
 
 ---
 
-## 🔧 Setup Instructions
+## 🍽️ Food Prediction Categories
 
-### For Development/Testing
+### 🥘 Food Trends & Viral Foods
 
-#### 1. MetaMask Configuration
+Predict the next big food trend, viral recipe, or ingredient that will dominate social media and restaurants.
 
-**Add Hardhat Test Network:**
+**Example Predictions:**
+
+- "Korean corn dogs will be the top street food trend in US cities by Q2 2025"
+- "Plant-based seafood will capture 15% of the seafood market within 12 months"
+- "Oat milk will surpass almond milk in coffee shop adoption by summer 2025"
+
+### 🍕 Restaurant Success Predictions
+
+Forecast restaurant performance, new location success, or chain expansion outcomes.
+
+**Example Predictions:**
+
+- "The new Italian restaurant on Main Street will receive 4+ stars within 60 days"
+- "Fast-casual Mediterranean chains will expand to 500+ locations this year"
+- "Ghost kitchens will represent 30% of delivery orders in major cities by 2025"
+
+### 🛒 Consumption & Market Predictions
+
+Predict food sales, dietary shifts, market demand, and consumer behavior changes.
+
+**Example Predictions:**
+
+- "Organic food sales will increase 25% during the next holiday season"
+- "Meal kit subscriptions will grow 40% as remote work continues"
+- "Plant-based protein sales will exceed $2B globally by year-end"
+
+### 🍎 Health & Nutrition Forecasts
+
+Forecast health food trends, supplement popularity, and wellness movement adoption.
+
+**Example Predictions:**
+
+- "Ashwagandha will become mainstream in 50+ consumer products"
+- "Intermittent fasting will be practiced by 100M+ people worldwide"
+- "Functional mushrooms will appear in 200+ new food products"
+
+---
+
+## 🔧 Platform Setup
+
+### For Production Use (Recommended)
+
+#### 1. MetaMask Sepolia Network Setup
+
+**Add Sepolia Testnet:**
 
 - Open MetaMask → Networks → Add Network
+- **Network Name:** `Sepolia Testnet`
+- **RPC URL:** `https://sepolia.infura.io/v3/YOUR_KEY` or `https://rpc.sepolia.org`
+- **Chain ID:** `11155111`
+- **Currency Symbol:** `ETH`
+- **Block Explorer:** `https://sepolia.etherscan.io`
+
+**Get Test ETH:**
+
+- Visit [Sepolia Faucet](https://sepoliafaucet.com/)
+- Enter your wallet address to receive test ETH
+- Use test ETH to make food predictions on the platform
+
+#### 2. Contract Information
+
+- **VeriBite Food Predictor Contract:** `0xAC93ef07c3861b071169F34D610027A79DF3B742`
+- **Network:** Ethereum Sepolia Testnet
+- **Backend API:** `https://team-juliet-veribite-production.up.railway.app`
+
+### For Local Development
+
+Private Key: 0x5de4111afa1a4b94908f83103eb1f1706367c2e68ca870fc3fb9a804cdab365a
+Address: 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC
+
+```
+
+#### 2. Local Development Setup (Optional)
+
+For developers who want to run the platform locally:
+
+**Add Hardhat Test Network:**
 - **Network Name:** `Hardhat Local`
 - **RPC URL:** `http://localhost:8545`
 - **Chain ID:** `31337`
 - **Currency Symbol:** `ETH`
 
-**Import Test Accounts:**
-
-```
-Admin Account:
-Private Key: 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
-Address: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
-
-User Account 1:
-Private Key: 0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d
-Address: 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
-
-User Account 2:
-Private Key: 0x5de4111afa1a4b94908f83103eb1f1706367c2e68ca870fc3fb9a804cdab365a
-Address: 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC
-```
-
-#### 2. Starting the Platform
-
-Run these commands in separate terminals:
-
-```powershell
-# Terminal 1: Start Hardhat Network
-cd C:\Users\Dell\web3\veribite
-npx hardhat node
-
-# Terminal 2: Start MongoDB
-mongod
-# OR if installed as service: net start MongoDB
-
-# Terminal 3: Start Backend Server
-cd C:\Users\Dell\web3\veribite\backend
-npm run dev
-
-# Terminal 4: Start Frontend
-cd C:\Users\Dell\web3\veribite
-npm run dev
-```
-
-The platform will be available at:
-
-- **Frontend:** http://localhost:3001
-- **Backend API:** http://localhost:3002
-- **Hardhat Network:** http://localhost:8545
-
 ---
 
-## 📱 How to Use VeriBite
+## 📱 How to Use VeriBite Food Predictions
 
-### 1. Connecting Your Wallet
+### 1. Connecting Your Wallet 🔗
 
 1. **Visit the Platform**
+   - Go to the deployed VeriBite URL or http://localhost:3000 (development)
+   - You'll see the food prediction homepage
 
-   - Go to http://localhost:3001
-   - You'll see the VeriBite homepage
-
-2. **Connect MetaMask**
-
-   - Click the "Connect Wallet" button in the top right
-   - MetaMask will popup asking for permission
-   - Select the account you want to use
-   - Approve the connection
+2. **Connect Your Web3 Wallet**
+   - Click the "Connect Wallet" button in the navigation
+   - Choose your preferred wallet (MetaMask, WalletConnect, etc.)
+   - Approve the connection request
+   - Ensure you're on Sepolia testnet
 
 3. **Verify Connection**
    - Your wallet address will appear in the header
    - You'll see your ETH balance
-   - The prediction form will become available
+   - The food prediction forms will become available
 
-### 2. Making Predictions
+### 2. Making Food Predictions 🍽️
 
-1. **Navigate to Prediction Form**
+1. **Navigate to Predictions Page**
+   - Click "Make Predictions" in the navigation
+   - Or scroll to the prediction form on the homepage
 
-   - On the homepage, scroll to the "Make a Prediction" section
-   - Or click "Make Prediction" in the navigation
+2. **Choose Your Food Prediction Category**
+   - **🥘 Food Trends**: Viral foods, ingredient popularity, cooking methods
+   - **🍕 Restaurant Success**: New openings, chain expansion, ratings
+   - **🛒 Consumption Patterns**: Sales forecasts, dietary shifts, market demand
+   - **🍎 Health & Nutrition**: Wellness trends, supplement adoption, diet popularity
 
-2. **Fill Out the Form**
+3. **Write Your Detailed Prediction**
+   - Be specific about timeframes (e.g., "within 6 months", "by Q2 2025")
+   - Include measurable outcomes (e.g., "25% market share", "500+ locations")
+   - Provide reasoning for your prediction
+   - Keep it under 500 characters
 
-   ```
-   Example Prediction:
-   "Bitcoin will reach $100,000 by December 31, 2024"
+4. **Set Your Confidence Stake**
+   - Choose how much ETH to stake (minimum 0.001 ETH)
+   - Higher stakes show more confidence and earn bigger rewards
+   - Consider your prediction confidence when staking
 
-   Stake Amount: 0.05 ETH
-   ```
+5. **Submit Your Prediction**
+   - Review your prediction details
+   - Click "Submit Prediction"
+   - Approve the transaction in your wallet
+   - Wait for blockchain confirmation
+
+```
+
+Example Prediction:
+"Bitcoin will reach $100,000 by December 31, 2024"
+
+Stake Amount: 0.05 ETH
+
+```
 
 3. **Submit Your Prediction**
 
-   - Click "Submit Prediction"
-   - MetaMask will popup for transaction approval
-   - Review the gas fees and confirm
-   - Wait for transaction confirmation
+- Click "Submit Prediction"
+- MetaMask will popup for transaction approval
+- Review the gas fees and confirm
+- Wait for transaction confirmation
 
 4. **Confirmation**
-   - You'll see a success message
-   - Your prediction will appear in the predictions feed
-   - Transaction hash will be provided for verification
+- You'll see a success message
+- Your prediction will appear in the predictions feed
+- Transaction hash will be provided for verification
 
 ### 3. Viewing Predictions
 
 1. **All Predictions Page**
 
-   - Click "View Predictions" in the navigation
-   - See all predictions from all users
-   - Filter by status: Pending, Correct, Incorrect
+- Click "View Predictions" in the navigation
+- See all predictions from all users
+- Filter by status: Pending, Correct, Incorrect
 
 2. **Prediction Details**
-   Each prediction shows:
+Each prediction shows:
 
-   - **Text:** The prediction statement
-   - **User:** Wallet address of predictor (abbreviated)
-   - **Stake:** Amount of ETH staked
-   - **Date:** When prediction was made
-   - **Status:** Pending/Correct/Incorrect
-   - **Reward:** Potential or earned reward
+- **Text:** The prediction statement
+- **User:** Wallet address of predictor (abbreviated)
+- **Stake:** Amount of ETH staked
+- **Date:** When prediction was made
+- **Status:** Pending/Correct/Incorrect
+- **Reward:** Potential or earned reward
 
 3. **Your Predictions**
-   - Connect your wallet to see your predictions highlighted
-   - Track your prediction history and rewards
+- Connect your wallet to see your predictions highlighted
+- Track your prediction history and rewards
 
 ### 4. Understanding Rewards
 
@@ -165,8 +215,10 @@ The platform will be available at:
 **Reward Calculation:**
 
 ```
+
 Your Reward = (Your Stake / Total Correct Stakes) × Total Incorrect Stakes Pool
-```
+
+````
 
 **Example:**
 
@@ -385,7 +437,7 @@ GET http://localhost:3002/api/predictions/user/YOUR_ADDRESS
 
 // Get contract stats
 GET http://localhost:3002/api/predictions/stats
-```
+````
 
 ---
 
